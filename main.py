@@ -33,10 +33,17 @@ for note in contacts_list[1:]:
     # Добавление email
     correct_record.append(note[6])
 
-    if correct_record in new_list:
-        print('повтор')
+
 
     new_list.append(correct_record)
+
+
+n = len(new_list)
+for i in range(n):
+    for j in range(i+1, n):
+        if new_list[i][:3] == new_list[j][:3]:
+            print(new_list[i])
+            print(new_list[j])
 
 
 
