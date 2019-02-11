@@ -23,10 +23,13 @@ for note in contacts_list[1:]:
 
     #Обработка и жобавление телефона
     correct_record.append(note[5])
-    print(note[5])
 
-    # a = re.match(r'\+ *\d +\s *\(* \d+\) *\- *\- *\d *\- *\d *', note[5])
-    # print(a[0])
+
+    a = re.findall(r'[7-8]\s*\(*\d*[\)\-\s]*\d*\-*\d*\-*\d{2}', note[5])
+    if len(a) > 0:
+        line = re.sub(r'\s*\(*\)*\-*', '', a[0])
+        print(line)
+
 
 
     new_list.append(correct_record)
