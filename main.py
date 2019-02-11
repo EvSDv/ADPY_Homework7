@@ -5,7 +5,6 @@ import csv
 with open("phonebook_raw.csv", encoding='utf-8') as f:
     rows = csv.reader(f, delimiter=",")
     contacts_list = list(rows)
-#print(contacts_list)
 
 # TODO 1: выполните пункты 1-3 ДЗ
 new_list = []
@@ -21,18 +20,24 @@ for note in contacts_list[1:]:
     #Добавление position
     correct_record.append(note[4])
 
-    #Обработка и жобавление телефона
-    correct_record.append(note[5])
+    #Обработка и добавление телефона
+    phone_raw = re.findall(r'[7-8]\s*\(*\d*[\)\-\s]*\d*\-*\d*\-*\d{2}', note[5])
+    if len(phone_raw) > 0:
+        phone_clear = re.sub(r'\s*\(*\)*\-*', '', phone_raw[0])
+        phone = f'+7({phone_clear[1:4]}){phone_clear[4:7]}-{phone_clear[7:9]}-{phone_clear[9:]}'
+        if re.findall(r'доб\.', note[5]):
+            prefix = re.findall(r'доб\.\s*\d+', note[5])[0][-4:]
+            phone += f' доб.{prefix}'
+        correct_record.append(phone)
 
+    # Добавление email
+    correct_record.append(note[6])
 
-    a = re.findall(r'[7-8]\s*\(*\d*[\)\-\s]*\d*\-*\d*\-*\d{2}', note[5])
-    if len(a) > 0:
-        line = re.sub(r'\s*\(*\)*\-*', '', a[0])
-        print(line)
-
-
+    if correct_record in new_list:
+        print('повтор')
 
     new_list.append(correct_record)
+
 
 
 
