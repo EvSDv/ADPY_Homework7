@@ -8,6 +8,7 @@ with open("phonebook_raw.csv", encoding='utf-8') as f:
 
 # TODO 1: выполните пункты 1-3 ДЗ
 new_list = []
+new_list.append(contacts_list[0])
 for note in contacts_list[1:]:
     correct_record = []
     #Разбивка и правильная сборка ФИО
