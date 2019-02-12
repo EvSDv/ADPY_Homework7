@@ -38,13 +38,26 @@ for note in contacts_list[1:]:
 
     new_list.append(correct_record)
 
+# def cont(list1,list2):
+#     for i in range(len(new_list[0])):
+#         if list1[i] == list2[i]:
+#             print('ololo')
 
-n = len(new_list)
-for i in range(n):
-    for j in range(i+1, n):
-        if new_list[i][:3] == new_list[j][:3]:
-            print(new_list[i])
-            print(new_list[j])
+for i in new_list:
+    print(len(i))
+
+
+# n = len(new_list)
+# for i in range(n):
+#     for j in range(i+1, n):
+#         if new_list[i][:3] == new_list[j][:3]:
+#             cont(new_list[i], new_list[j])
+#             # print(new_list[i])
+#             # print(new_list[j])
+
+
+
+
 
 
 
